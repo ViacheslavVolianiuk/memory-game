@@ -3,7 +3,7 @@ import './SingleCard.css';
 
 function SingleCard({ card, handleChoice }) {
   const handleClick = (e) => {
-    handleChoice(e.target.previousSibling.src);
+    handleChoice(e.target.previousSibling);
   };
 
   return (
