@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import SingleCard from './Components/SingleCard';
 
@@ -30,7 +30,27 @@ function App() {
 
   //handle a choice
   const handleChoice = (card) => {
+    choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
     console.log(card);
+  };
+
+  useEffect(() => {
+    if (choiceOne && choiceTwo) {
+      if (choiceOne === choiceTwo) {
+        console.log('match');
+        resetTurn();
+      } else {
+        console.log('dont match');
+        resetTurn();
+      }
+    }
+  }, [choiceOne, choiceTwo]);
+
+  //reset turn
+  const resetTurn = () => {
+    setChoiceOne(null);
+    setChoiceTwo(null);
+    setTurns((prevTurns) => prevTurns + 1);
   };
 
   return (
