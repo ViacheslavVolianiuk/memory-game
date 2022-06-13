@@ -30,3 +30,14 @@
   transform: rotateY(90deg);
   transition-delay: 0s;
 }
+
+@media only screen and (max-width: 700px) {
+  .card img {
+    transform: scale(0.9);
+  }
+}
+@media only screen and (max-width: 640px) {
+  .card img {
+    transform: scale(0.8);
+  }
+}
