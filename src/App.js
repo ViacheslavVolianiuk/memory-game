@@ -1,4 +1,5 @@
 import './App.css';
+import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 const cardImages = [
@@ -20,14 +21,17 @@ function App() {
       .sort(() => Math.random() - 0.5)
       .map((card) => ({ ...card, id: uuidv4() }));
 
-    setCards(shuffleCards);
+    setCards(shuffledCards);
+    setTurns(0);
   };
+
+  console.log(cards, turns);
 
   return (
     <div className="bg">
       <div className="App">
         <h1>Magic Match</h1>
-        <button>New Game</button>
+        <button onClick={shuffleCards}>New Game</button>
       </div>
     </div>
   );
