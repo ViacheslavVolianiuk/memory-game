@@ -1,6 +1,28 @@
 import './App.css';
+import { v4 as uuidv4 } from 'uuid';
+
+const cardImages = [
+  { src: '/img/helmet-1.png' },
+  { src: '/img/potion-1.png' },
+  { src: '/img/ring-1.png' },
+  { src: '/img/scroll-1.png' },
+  { src: '/img/shield-1.png' },
+  { src: '/img/sword-1.png' },
+];
 
 function App() {
+  const [cards, setCards] = useState([]);
+  const [turns, setTurns] = useState(0);
+
+  //shuffle cards
+  const shuffleCards = () => {
+    const shuffledCards = [...cardImages, ...cardImages]
+      .sort(() => Math.random() - 0.5)
+      .map((card) => ({ ...card, id: uuidv4() }));
+
+    setCards(shuffleCards);
+  };
+
   return (
     <div className="bg">
       <div className="App">
